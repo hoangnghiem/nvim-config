@@ -70,8 +70,8 @@ function! PackagerInit() abort
 
   " File explorer
   call packager#add('kyazdani42/nvim-web-devicons')
-  " call packager#add('kyazdani42/nvim-tree.lua')
-  call packager#add('neoclide/coc.nvim', { 'branch': 'release' })
+  call packager#add('kyazdani42/nvim-tree.lua')
+  " call packager#add('neoclide/coc.nvim', { 'branch': 'release' })
 
   call packager#add('nvim-lua/popup.nvim')
   call packager#add('nvim-lua/plenary.nvim')
