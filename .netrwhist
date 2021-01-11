@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/Users/hoang/.config/nvim'
+let g:netrw_dirhist_0='/Users/hoang/.config'
+let g:netrw_dirhist_9='/Users/hoang/.config/kitty'
+let g:netrw_dirhist_8='/Users/hoang/.config/nvim/pack/packager/start/nord-vim/colors'
+let g:netrw_dirhist_7='/Users/hoang/.config/nvim/pack/packager/start/nord-vim'
+let g:netrw_dirhist_6='/Users/hoang/.config/nvim/pack/packager/start'
+let g:netrw_dirhist_5='/Users/hoang/.config/nvim/pack/packager'
+let g:netrw_dirhist_4='/Users/hoang/.config/nvim/pack'
+let g:netrw_dirhist_3='/Users/hoang/.config/nvim'
+let g:netrw_dirhist_2='/Users/hoang/.config/kitty'

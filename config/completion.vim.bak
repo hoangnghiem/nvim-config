@@ -1,0 +1,48 @@
+packadd completion-nvim
+
+" Use completion-nvim in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()
+
+" Use completion-nvim in every buffer
+" let g:completion_enable_snippet = 'vim-vsnip'
+let g:completion_enable_snippet = 'UltiSnips'
+
+if has('nvim-0.5')
+  set omnifunc=v:lua.vim.lsp.omnifunc
+end
+
+" Set completeopt to have a better completion experience
+" set completeopt=menuone,noinsert,noselect
+
+
+" Ignore tags for completion by default
+set complete-=t
+set completeopt=longest,menuone,noinsert,noselect
+" set completeopt=menu
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
+
+" Use enter to select completion
+" let g:SuperTabCrMapping = 1
+
+" Use context completion. See *supertab-defaultcompletion*.
+" Chaining unfortunately doesn't work with v:lua
+" let g:SuperTabDefaultCompletionType = 'context'
+
+" Snippets
+" let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsUsePythonVersion = 3
+" let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips', 'UltiSnips']
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-k>"
+
+let g:completion_confirm_key = "\<C-l>"
+
+" imap <tab> <Plug>(completion_smart_tab)
+" imap <s-tab> <Plug>(completion_smart_s_tab)

@@ -1,0 +1,560 @@
+{
+  "useState": {
+    "prefix": "useState",
+    "body": [
+      "const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState<${2:type}>(${3:initialState});"
+    ],
+    "description": "React useState hook"
+  },
+  "useEffect": {
+    "prefix": "useEffect",
+    "body": [
+      "useEffect(() => {",
+      "\t${1:effect}",
+      "\treturn () => {",
+      "\t\t${2:cleanup}",
+      "\t}",
+      "}, [${3:input}]);"
+    ],
+    "description": "React useEffect hook"
+  },
+  "useContext": {
+    "prefix": "useContext",
+    "body": ["const ${1:context} = useContext(${2:contextValue});"],
+    "description": "React useContext hook"
+  },
+  "useReducer": {
+    "prefix": "useReducer",
+    "body": ["const [state, dispatch] = useReducer(${1:reducer}, ${2:initialState}, ${3:init});"],
+    "description": "React useReducer hook"
+  },
+  "useCallback": {
+    "prefix": "useCallback",
+    "body": ["useCallback(", "\t() => {", "\t\t${1:callback}", "\t},", "\t[${2:input}],", ");"],
+    "description": "React useCallback hook"
+  },
+  "useMemo": {
+    "prefix": "useMemo",
+    "body": ["useMemo(() => ${1:function}, ${2:input});"],
+    "description": "React useMemo hook"
+  },
+  "useRef": {
+    "prefix": "useRef",
+    "body": ["const ${1:ref} = useRef<${2:HTMLInputElement}>();"],
+    "description": "React useRef hook"
+  },
+  "useImperativeHandle": {
+    "prefix": "useImperativeHandle",
+    "body": [
+      "useImperativeHandle(",
+      "\t${1:ref},",
+      "\t() => {",
+      "\t\t${2:handler}",
+      "\t},",
+      "\t[${3:input}],",
+      ");"
+    ],
+    "description": "React useImperativeHandle hook"
+  },
+  "useDebugValue": {
+    "prefix": "useDebugValue",
+    "body": ["useDebugValue(${1:value});"],
+    "description": "React useDebugValue hook"
+  },
+  "useLayoutEffect": {
+    "prefix": "useLayoutEffect",
+    "body": [
+      "useLayoutEffect(() => {",
+      "\t${1:effect}",
+      "\treturn () => {",
+      "\t\t${2:cleanup}",
+      "\t};",
+      "}, [${3:input}]);"
+    ],
+    "description": "React useLayoutEffect hook"
+  },
+  "React Component": {
+    "prefix": "rc",
+    "body": [
+      "import React from 'react';",
+      "",
+      "interface ${1}Props {",
+      "\t",
+      "}",
+      "",
+      "const ${1:${TM_FILENAME_BASE}}: React.FC<${1}Props> = () => {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t);",
+      "};",
+      "",
+      "export default ${1};"
+    ],
+    "description": "React functional component with return statement"
+  },
+  "React Component without return": {
+    "prefix": "rcwr",
+    "body": [
+      "import React from 'react';",
+      "",
+      "interface ${1}Props {",
+      "\t",
+      "}",
+      "",
+      "const ${1:${TM_FILENAME_BASE}}: React.FC<${1}Props> = () => (",
+      "\t<div>",
+      "\t\t$0",
+      "\t</div>",
+      ");",
+      "",
+      "export default ${1};"
+    ],
+    "description": "React functional component without return statement"
+  },
+  "React Component with memo": {
+    "prefix": "rcm",
+    "body": [
+      "import React, { memo } from 'react';",
+      "",
+      "interface ${1}Props {",
+      "\t",
+      "}",
+      "",
+      "const ${1:${TM_FILENAME_BASE}}: React.FC<${1}Props> = memo(() => {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t);",
+      "});",
+      "",
+      "export default ${1};"
+    ],
+    "description": "React component with memo"
+  },
+  "React Class Component": {
+    "prefix": "rcc",
+    "body": [
+      "import React from 'react';",
+      "",
+      "interface ${1}Props {",
+      "\t",
+      "}",
+      "",
+      "interface ${1}State {",
+      "\t",
+      "}",
+      "",
+      "class ${1:${TM_FILENAME_BASE}} extends React.Component<${1}Props, ${1}State> {",
+      "\tstate = {}",
+      "",
+      "\trender() {",
+      "\t\treturn (",
+      "\t\t\t<div>",
+      "\t\t\t\t$0",
+      "\t\t\t</div>",
+      "\t\t);",
+      "\t}",
+      "}",
+      "",
+      "",
+      "export default ${1};\n"
+    ],
+    "description": "React Class Component"
+  },
+  "React PureComponent": {
+    "prefix": "rpc",
+    "body": [
+      "import React, { PureComponent } from 'react';",
+      "",
+      "interface ${1}Props {",
+      "\t",
+      "}",
+      "",
+      "class ${1:${TM_FILENAME_BASE}} extends PureComponent<${1}Props> {",
+      "\trender() {",
+      "\t\treturn (",
+      "\t\t\t<div>",
+      "\t\t\t\t$0",
+      "\t\t\t</div>",
+      "\t\t)",
+      "\t}",
+      "}",
+      "",
+      "export default ${1};\n"
+    ],
+    "description": "React PureComponent class"
+  },
+  "React HOC": {
+    "prefix": "rhoc",
+    "body": [
+      "import React from 'react';",
+      "",
+      "function ${1:withFoo}<T>(Component: React.ComponentType<T>) {",
+      "\tconst ${2:WithFoo}: React.FC<T> = (props) => {",
+      "\t\treturn <Component {...props} />;",
+      "\t};",
+      "",
+      "\t${2:WithFoo}.displayName = `${1:withFoo}(${Component.displayName || Component.name}`;",
+      "",
+      "\treturn ${2:WithFoo};",
+      "}",
+      "",
+      "export default ${1:withFoo};\n"
+    ],
+    "description": "React HOC"
+  },
+  "React HOC Class Component": {
+    "prefix": "rhocc",
+    "body": [
+      "import React from 'react';",
+      "",
+      "function ${1:withFoo}<T>(WrappedComponent: React.ComponentType<T>) {",
+      "\tclass ${2:WithFoo} extends React.Component<T> {",
+      "\t\tpublic static displayName = `${1:withFoo}(${WrappedComponent.displayName || WrappedComponent.name}`;",
+      "\t\tstate = {};",
+      "",
+      "\t\trender() {",
+      "\t\t\treturn <WrappedComponent {...this.props} />;",
+      "\t\t}",
+      "\t}",
+      "",
+      "\treturn ${2:WithFoo};",
+      "}",
+      "",
+      "export default ${1:withFoo};\n"
+    ],
+    "description": "React HOC Class Component"
+  },
+  "React bind method": {
+    "prefix": "rbind",
+    "body": "this.${1} = this.${1}.bind(this);",
+    "description": "React bind method to this"
+  },
+  "typeScriptReactClassComponent": {
+    "prefix": "tsrcc",
+    "body": [
+      "import React, { Component } from 'react'",
+      "",
+      "interface Props {",
+      "\t",
+      "}",
+      "interface State {",
+      "\t",
+      "}",
+      "",
+      "export default class ${1:${TM_FILENAME_BASE}} extends Component<Props, State> {",
+      "\tstate = {}",
+      "",
+      "\trender() {",
+      "\t\treturn (",
+      "\t\t\t<div>",
+      "\t\t\t\t$0",
+      "\t\t\t</div>",
+      "\t\t)",
+      "\t}",
+      "}",
+      ""
+    ],
+    "description": "Creates a React component class with ES7 module system and TypeScript interfaces"
+  },
+  "typeScriptReactClassExportComponent": {
+    "prefix": "tsrce",
+    "body": [
+      "import React, { Component } from 'react'",
+      "",
+      "interface Props {",
+      "\t",
+      "}",
+      "interface State {",
+      "\t",
+      "}",
+      "",
+      "class ${1:${TM_FILENAME_BASE}} extends Component<Props, State> {",
+      "\tstate = {}",
+      "",
+      "\trender() {",
+      "\t\treturn (",
+      "\t\t\t<div>",
+      "\t\t\t\t$0",
+      "\t\t\t</div>",
+      "\t\t)",
+      "\t}",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}",
+      ""
+    ],
+    "description": "Creates a React component class with ES7 module system and TypeScript interfaces"
+  },
+  "typeScriptReactFunctionalExportComponent": {
+    "prefix": "tsrfce",
+    "body": [
+      "import React, { ReactElement } from 'react'",
+      "",
+      "interface Props {",
+      "\t",
+      "}",
+      "",
+      "function ${1:${TM_FILENAME_BASE}}({}: Props): ReactElement {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t)",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}",
+      ""
+    ],
+    "description": "Creates a React Functional Component with ES7 module system and TypeScript interface"
+  },
+  "typeScriptReactFunctionalComponent": {
+    "prefix": "tsrfc",
+    "body": [
+      "import React, { ReactElement } from 'react'",
+      "",
+      "interface Props {",
+      "\t",
+      "}",
+      "",
+      "export default function ${1:${TM_FILENAME_BASE}}({}: Props): ReactElement {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t)",
+      "}",
+      ""
+    ],
+    "description": "Creates a React Functional Component with ES7 module system and TypeScript interface"
+  },
+  "typeScriptReactArrowFunctionExportComponent": {
+    "prefix": "tsrafce",
+    "body": [
+      "import React from 'react'",
+      "",
+      "interface Props {",
+      "\t",
+      "}",
+      "",
+      "const ${1:${TM_FILENAME_BASE}} = (props: Props) => {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t)",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}",
+      ""
+    ],
+    "description": "Creates a React Arrow Function Component with ES7 module system and TypeScript interface"
+  },
+  "typeScriptReactArrowFunctionComponent": {
+    "prefix": "tsrafc",
+    "body": [
+      "import React from 'react'",
+      "",
+      "interface Props {",
+      "\t",
+      "}",
+      "",
+      "export const ${1:${TM_FILENAME_BASE}} = (props: Props) => {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t)",
+      "}",
+      ""
+    ],
+    "description": "Creates a React Arrow Function Component with ES7 module system and TypeScript interface"
+  },
+  "typeScriptReactClassPureComponent": {
+    "prefix": "tsrpc",
+    "body": [
+      "import React, { PureComponent } from 'react'",
+      "",
+      "interface Props {",
+      "\t",
+      "}",
+      "",
+      "export default class ${1:${TM_FILENAME_BASE}} extends PureComponent<Props> {",
+      "\trender() {",
+      "\t\treturn (",
+      "\t\t\t<div>",
+      "\t\t\t\t$0",
+      "\t\t\t</div>",
+      "\t\t)",
+      "\t}",
+      "}",
+      ""
+    ],
+    "description": "Creates a React pure component class with ES7 module system and TypeScript interface"
+  },
+  "typeScriptReactClassExportPureComponent": {
+    "prefix": "tsrpce",
+    "body": [
+      "import React, { PureComponent } from 'react'",
+      "",
+      "interface Props {",
+      "\t",
+      "}",
+      "",
+      "class ${1:${TM_FILENAME_BASE}} extends PureComponent<Props> {",
+      "\trender() {",
+      "\t\treturn (",
+      "\t\t\t<div>",
+      "\t\t\t\t$0",
+      "\t\t\t</div>",
+      "\t\t)",
+      "\t}",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}",
+      ""
+    ],
+    "description": "Creates a React pure component class with ES7 module system and TypeScript interface"
+  },
+  "typeScriptReactFunctionMemoComponent": {
+    "prefix": "tsrmc",
+    "body": [
+      "import React, { memo } from 'react'",
+      "",
+      "interface Props {",
+      "\t",
+      "}",
+      "",
+      "export default memo(function ${1:${TM_FILENAME_BASE}}({}: Props) {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t)",
+      "})",
+      ""
+    ],
+    "description": "Creates a React Memo Function Component with ES7 module system and TypeScript interface"
+  },
+  "typeScriptReactClassCompomentRedux": {
+    "prefix": "tsrcredux",
+    "body": [
+      "import React, { Component } from 'react'",
+      "import { connect } from 'react-redux'",
+      "",
+      "interface Props {",
+      "\t",
+      "}",
+      "interface State {",
+      "\t",
+      "}",
+      "",
+      "export class ${1:${TM_FILENAME_BASE}} extends Component<Props, State> {",
+      "\tstate = {}",
+      "",
+      "\trender() {",
+      "\t\treturn (",
+      "\t\t\t<div>",
+      "\t\t\t\t$0",
+      "\t\t\t</div>",
+      "\t\t)",
+      "\t}",
+      "}",
+      "",
+      "const mapStateToProps = (state) => ({",
+      "\t",
+      "})",
+      "",
+      "const mapDispatchToProps = {",
+      "\t",
+      "}",
+      "",
+      "export default connect(mapStateToProps, mapDispatchToProps)(${1:${TM_FILENAME_BASE}})",
+      ""
+    ],
+    "description": "Creates a React component class with PropTypes with connected redux and ES7 module system and TypeScript interfaces"
+  },
+  "typescriptReactNativeArrowFunctionComponent": {
+    "prefix": "tsrnf",
+    "body": [
+      "import React from 'react'",
+      "import { View, Text } from 'react-native'",
+      "",
+      "interface Props {",
+      "\t",
+      "}",
+      "",
+      "const ${1:${TM_FILENAME_BASE}} = (props: Props) => {",
+      "\treturn (",
+      "\t\t<View>",
+      "\t\t\t<Text>$0</Text>",
+      "\t\t</View>",
+      "\t)",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}",
+      ""
+    ],
+    "description": "Creates a React Native Arrow Function Component with ES7 module system and TypeScript interface"
+  },
+  "typescriptReactNativeArrowFunctionComponentNamedProps": {
+    "prefix": "tsrnfi",
+    "body": [
+      "import React from 'react'",
+      "import { View } from 'react-native'",
+      "",
+      "interface ${1:${TM_FILENAME_BASE}}Props {",
+      "\t",
+      "}",
+      "",
+      "const ${1:${TM_FILENAME_BASE}}: React.FunctionComponent<${1:${TM_FILENAME_BASE}}Props> = (props) => {",
+      "\treturn (",
+      "\t\t<View>",
+      "\t\t\t$0",
+      "\t\t</View>",
+      "\t)",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}",
+      ""
+    ],
+    "description": "Creates a React Native Arrow Function Component with ES7 module system and named TypeScript interface"
+  },
+  "typescriptReactNativeArrowFunctionComponentWithStyles": {
+    "prefix": "tsrnfs",
+    "body": [
+      "import React from 'react'",
+      "import { StyleSheet, Text, View } from 'react-native'",
+      "",
+      "interface Props {",
+      "\t",
+      "}",
+      "",
+      "const ${1:${TM_FILENAME_BASE}} = (props: Props) => {",
+      "\treturn (",
+      "\t\t<View>",
+      "\t\t\t<Text>$0</Text>",
+      "\t\t</View>",
+      "\t)",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}",
+      "",
+      "const styles = StyleSheet.create({})",
+      ""
+    ],
+    "description": "Creates a React Native Arrow Function Component with ES7 module system, TypeScript interface and StyleSheet"
+  },
+  "Export interface": {
+    "prefix": "expint",
+    "body": ["export interface ${1:${TM_FILENAME_BASE}} {$0}"]
+  },
+  "Export type": {
+    "prefix": "exptp",
+    "body": ["export type ${1:${TM_FILENAME_BASE}} = {$0}"]
+  }
+
+}
