@@ -21,5 +21,6 @@ git clone https://github.com/hoangnghiem/nvim-config.git ~/.config/nvim
 | ,rc | Copy current ruby class name  |
 | ,w | Open window hydra for quickly moving between split windows  |
 | ,, | Open buffer hydra for quickly moving between buffers  |
+| \<leader\>tu  | Toggle Rspec file  |
 
 Check lua/config/keymaps.lua for more key bindings.
