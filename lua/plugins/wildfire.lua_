@@ -1,0 +1,14 @@
+return {
+  "sustech-data/wildfire.nvim",
+  opts = {
+    surround_pairs = {
+      html = { { "<", ">" } }, -- For matching HTML tags
+      erb = { { "<%", "%>" } }, -- For matching ERB blocks
+    },
+    keymaps = {
+      init_selection = "<CR>",
+      node_incremental = "<CR>",
+      node_decremental = "<BS>",
+    },
+  },
+}
