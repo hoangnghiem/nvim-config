@@ -68,13 +68,21 @@ map("n", "<Leader>rh", function()
   Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/helpers" })
 end, { noremap = true, silent = true, desc = "helpers" })
 
-map("n", "<Leader>tu", function()
-  require("rails.init").toggle_rspec()
-end, { noremap = true, silent = true, desc = "Toggle Rspec" })
-
 map("n", ",rc", function()
   require("rails.init").copy_fully_qualified_class_name()
 end, { noremap = true, silent = true, desc = "Copy class name" })
+
+map("n", ",rv", function()
+  require("rails.init").toggle_view_controller()
+end, { noremap = true, silent = true, desc = "Toggle view/controller" })
+
+map("n", ",rm", function()
+  require("rails.init").toggle_migration()
+end, { noremap = true, silent = true, desc = "Open migrations" })
+
+map("n", ",rs", function()
+  require("rails.init").toggle_rspec()
+end, { noremap = true, silent = true, desc = "Open view files" })
 
 map("n", "<Leader>f.", function()
   Snacks.picker.files({ cwd = vim.fn.expand("%:p:h") })
