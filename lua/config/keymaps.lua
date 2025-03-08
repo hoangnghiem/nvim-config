@@ -21,51 +21,51 @@ map("n", "<tab>", "za", { desc = "Toggle fold" })
 map("n", "<Leader>fo", "<cmd>Neotree reveal<cr>", { desc = "Reveal file" })
 
 map("n", "<Leader>rm", function()
-  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/models" })
+  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/models", title = "Models" })
 end, { noremap = true, silent = true, desc = "models" })
 
 map("n", "<Leader>rn", function()
-  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/db" })
+  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/db", title = "Migrations" })
 end, { noremap = true, silent = true, desc = "migrations" })
 
 map("n", "<Leader>rc", function()
-  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/controllers" })
+  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/controllers", title = "Controllers" })
 end, { noremap = true, silent = true, desc = "controllers" })
 
 map("n", "<Leader>rv", function()
-  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/views" })
+  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/views", title = "Views" })
 end, { noremap = true, silent = true, desc = "views" })
 
 map("n", "<Leader>ry", function()
-  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/views/layouts" })
+  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/views/layouts", title = "Layouts" })
 end, { noremap = true, silent = true, desc = "layouts" })
 
 map("n", "<Leader>rp", function()
-  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/components" })
+  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/components", title = "View Components" })
 end, { noremap = true, silent = true, desc = "components" })
 
 map("n", "<Leader>ro", function()
-  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/previews" })
+  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/previews", title = "View Component Previews" })
 end, { noremap = true, silent = true, desc = "previews" })
 
 map("n", "<Leader>ri", function()
-  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/config" })
+  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/config", title = "Config" })
 end, { noremap = true, silent = true, desc = "config" })
 
 map("n", "<Leader>rs", function()
-  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/services" })
+  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/services", title = "Services" })
 end, { noremap = true, silent = true, desc = "services" })
 
 map("n", "<Leader>rj", function()
-  Snacks.picker.files({ cwd = vim.fn.getcwd(), pattern = ".js" })
+  require("rails.init").find_js_files()
 end, { noremap = true, silent = true, desc = "javascripts" })
 
 map("n", "<Leader>rt", function()
-  Snacks.picker.files({ cwd = vim.fn.getcwd(), pattern = ".css" })
+  require("rails.init").find_css_files()
 end, { noremap = true, silent = true, desc = "stylesheets" })
 
 map("n", "<Leader>rh", function()
-  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/helpers" })
+  Snacks.picker.files({ cwd = vim.fn.getcwd() .. "/app/helpers", title = "Helpers" })
 end, { noremap = true, silent = true, desc = "helpers" })
 
 map("n", ",rc", function()

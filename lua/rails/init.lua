@@ -104,6 +104,86 @@ function M.toggle_rspec()
   end
 end
 
+function M.find_js_files()
+  -- Define the project root and vite path
+  local project_root = vim.fn.getcwd() -- Current working directory as project root
+  local vite_path = project_root .. "/app/vite"
+  if vim.fn.isdirectory(vite_path) == 0 then
+    vim.notify("No app/vite directory found", vim.log.levels.WARN)
+    return
+  end
+
+  -- Find all .js files recursively under app/vite
+  local js_files = vim.fn.glob(vite_path .. "/**/*.js", false, true)
+  if #js_files == 0 then
+    vim.notify("No JavaScript files found in app/vite", vim.log.levels.WARN)
+    return
+  end
+
+  -- Prepare items for the picker with relative paths
+  local items = {}
+  for _, file in ipairs(js_files) do
+    -- Strip the project root to get relative path
+    local relative_path = file:gsub("^" .. project_root:gsub("[%-%.%+%[%]%(%)%$%^%%%?%*]", "%%%1") .. "/", "")
+    table.insert(items, {
+      text = relative_path, -- Relative path from project root (e.g., "app/vite/components/Button.js")
+      file = file, -- Full path for editing
+    })
+  end
+
+  -- Open picker with custom title
+  require("snacks.picker").pick({
+    items = items,
+    title = "JavaScript Files",
+    format = function(item)
+      return { { item.text, "Normal" } }
+    end,
+    action = function(_, selected)
+      vim.cmd.edit(selected.file)
+    end,
+  })
+end
+
+function M.find_css_files()
+  -- Define the project root and vite path
+  local project_root = vim.fn.getcwd() -- Current working directory as project root
+  local vite_path = project_root .. "/app/vite"
+  if vim.fn.isdirectory(vite_path) == 0 then
+    vim.notify("No app/vite directory found", vim.log.levels.WARN)
+    return
+  end
+
+  -- Find all .js files recursively under app/vite
+  local css_files = vim.fn.glob(vite_path .. "/**/*.css", false, true)
+  if #css_files == 0 then
+    vim.notify("No CSS files found in app/vite", vim.log.levels.WARN)
+    return
+  end
+
+  -- Prepare items for the picker with relative paths
+  local items = {}
+  for _, file in ipairs(css_files) do
+    -- Strip the project root to get relative path
+    local relative_path = file:gsub("^" .. project_root:gsub("[%-%.%+%[%]%(%)%$%^%%%?%*]", "%%%1") .. "/", "")
+    table.insert(items, {
+      text = relative_path, -- Relative path from project root (e.g., "app/vite/components/Button.js")
+      file = file, -- Full path for editing
+    })
+  end
+
+  -- Open picker with custom title
+  require("snacks.picker").pick({
+    items = items,
+    title = "CSS Files",
+    format = function(item)
+      return { { item.text, "Normal" } }
+    end,
+    action = function(_, selected)
+      vim.cmd.edit(selected.file)
+    end,
+  })
+end
+
 -- Get the current node under the cursor
 local function get_current_node()
   local node = ts_utils.get_node_at_cursor()
