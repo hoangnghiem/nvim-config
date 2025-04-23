@@ -82,7 +82,7 @@ end, { noremap = true, silent = true, desc = "Open migrations" })
 
 map("n", ",rs", function()
   require("rails.init").toggle_rspec()
-end, { noremap = true, silent = true, desc = "Open view files" })
+end, { noremap = true, silent = true, desc = "Toggle spec" })
 
 map("n", "<Leader>f.", function()
   Snacks.picker.files({ cwd = vim.fn.expand("%:p:h") })

@@ -8,9 +8,42 @@ function M.toggle_view_controller()
   local controller_match = file:match("app/controllers/(.+)_controller%.rb$")
   if controller_match then
     local view_path = "app/views/" .. controller_match
-    print(view_path)
+    if vim.fn.isdirectory(view_path) == 0 then
+      vim.notify("No views directory found at " .. view_path, vim.log.levels.WARN)
+      return
+    end
 
-    Snacks.picker.files({ cwd = view_path, title = "Views" })
+    -- Get only first-level files (no subdirectories)
+    local view_files = vim.fn.glob(view_path .. "/*.{erb,haml,slim,rb}", false, true)
+    if #view_files == 0 then
+      vim.notify("No view files found in " .. view_path, vim.log.levels.WARN)
+      return
+    end
+
+    -- Prepare picker items with relative paths
+    local project_root = vim.fn.getcwd()
+    local items = {}
+    for _, view_file in ipairs(view_files) do
+      local filename = vim.fn.fnamemodify(view_file, ":t")
+      -- local relative_path = view_file:gsub("^" .. project_root:gsub("[%-%.%+%[%]%(%)%$%^%%%?%*]", "%%%1") .. "/", "")
+      table.insert(items, {
+        text = filename, -- e.g., "app/views/products/index.html.erb"
+        file = view_file, -- Full path for editing
+      })
+    end
+
+    -- Use snacks.nvim picker
+    require("snacks.picker").pick({
+      items = items,
+      title = "Views", -- Custom title
+      pattern = "", -- Allow filtering
+      format = function(item)
+        return { { item.text, "Normal" } }
+      end,
+      action = function(_, selected)
+        vim.cmd.edit(selected.file)
+      end,
+    })
     return
   end
 

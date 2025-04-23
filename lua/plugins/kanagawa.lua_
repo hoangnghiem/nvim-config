@@ -1,5 +1,4 @@
 return {
-  -- add gruvbox
   {
     "rebelot/kanagawa.nvim",
     opts = {
@@ -10,10 +9,11 @@ return {
 
         return {
           WinSeparator = { fg = colors.palette.sumiInk6, bg = colors.none }, -- Adjust colors as needed
-          Visual = { fg = colors.none, bg = colors.theme.ui.bg_search }, -- Adjust colors as needed
-          TelescopeBorder = { fg = border, bg = "#1f1f28" },
-          FloatBorder = { fg = border, bg = "#1f1f28" },
-          Folded = { bg = "#2B3328", italic = true },
+          -- Visual = { fg = "#7E9CD8", bg = "NONE" },
+          -- Visual = { fg = colors.theme.ui.fg, bg = colors.theme.ui.bg_search }, -- Adjust colors as needed
+          -- TelescopeBorder = { fg = border, bg = "#1f1f28" },
+          -- FloatBorder = { fg = border, bg = "#1f1f28" },
+          -- Folded = { bg = "#2B3328", italic = true },
         }
       end,
     },

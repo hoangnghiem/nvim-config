@@ -16,6 +16,12 @@ return {
           },
         },
       },
+      scratch = {
+        win = {
+          width = 0.8,
+          height = 0.7,
+        },
+      },
     },
   },
 }
